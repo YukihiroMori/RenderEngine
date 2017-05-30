@@ -3,8 +3,6 @@
 #include "Main.h"
 #include "Paths.h"
 #include "GLSLCompiler.h"
-#include "Obj.h"
-#include "AABB.h"
 
 #define GL_ERROR(msg) {\
 	GLenum error = glGetError();\
@@ -37,8 +35,6 @@ namespace utils {
 	GLuint LoadImage(const char *imagename);
 	GLuint LoadMipMapImage(const char *imagename , GLint levels);
 	GLuint LoadShader(const char *vert, const char *frag);
-
-	bool LoadObj(const char *name, vector<Obj::grp> &group, vector<vec3> &pos, vector<vec3> &norm, bool normalized, AABB &aabb);
 }
 
 static GLboolean printShaderInfoLog(GLuint shader, const char *str);

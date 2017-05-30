@@ -10,7 +10,6 @@ public:
 	virtual ~Shader() {
 		if (program != 0) {
 			glDeleteProgram(program);
-
 			program = 0;
 		}
 	}
@@ -123,6 +122,8 @@ public:
 
 		GLint location = glGetUniformLocation(program, name.c_str());
 		m_uniformLocations[name] = location;
+
+		//cout << "Locate " << name << endl;
 
 		return location;
 	}

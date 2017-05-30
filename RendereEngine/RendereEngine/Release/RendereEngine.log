@@ -1,0 +1,18 @@
+﻿  Main.cpp
+C:\Users\mori\Documents\Library\opencv\build\install\include\opencv2/core/mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
+C:\Users\mori\Documents\Library\opencv\build\install\include\opencv2/core/persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
+C:\Users\mori\Documents\Library\opencv\build\install\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
+C:\Users\mori\Documents\Library\opencv\build\install\include\opencv2/core/utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\LSPSM.h(86): warning C4018: '<': signed/unsigned mismatch
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\LSPSM.h(98): warning C4018: '<': signed/unsigned mismatch
+Main.cpp(20): warning C4244: 'initializing': conversion from 'double' to 'GLint', possible loss of data
+Main.cpp(29): warning C4244: 'initializing': conversion from 'double' to 'GLint', possible loss of data
+Main.cpp(114): warning C4018: '<': signed/unsigned mismatch
+Main.cpp(331): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  0 of 2257 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    33 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  RendereEngine.vcxproj -> C:\Users\mori\Documents\Visual Studio 2015\Projects\RendereEngine\Release\RendereEngine.exe
+  RendereEngine.vcxproj -> C:\Users\mori\Documents\Visual Studio 2015\Projects\RendereEngine\Release\RendereEngine.pdb (Full PDB)

@@ -1,0 +1,15 @@
+﻿  Window.cpp
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\main.h(7): warning C4005: 'malloc': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\crtdbg.h(287): note: see previous definition of 'malloc'
+c:\users\mori\documents\library\opencv\build\install\include\opencv2\core\mat.hpp(1965): warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
+c:\users\mori\documents\library\opencv\build\install\include\opencv2\core\persistence.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
+c:\users\mori\documents\library\opencv\build\install\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
+c:\users\mori\documents\library\opencv\build\install\include\opencv2\core\utility.hpp : warning C4819: The file contains a character that cannot be represented in the current code page (932). Save the file in Unicode format to prevent data loss
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\window.cpp(84): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\window.cpp(86): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\window.cpp(99): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\window.cpp(103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\window.cpp(111): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\mori\documents\visual studio 2015\projects\rendereengine\rendereengine\window.cpp(115): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  RendereEngine.vcxproj -> C:\Users\mori\Documents\Visual Studio 2015\Projects\RendereEngine\Debug\RendereEngine.exe
+  RendereEngine.vcxproj -> C:\Users\mori\Documents\Visual Studio 2015\Projects\RendereEngine\Debug\RendereEngine.pdb (Partial PDB)

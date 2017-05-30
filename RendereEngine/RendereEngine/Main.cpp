@@ -7,6 +7,8 @@
 #include "Trackball.h"
 #include "Quad.h"
 #include "Light.h"
+#include "LSPSM.h"
+
 
 using namespace utils;
 
@@ -50,7 +52,7 @@ GLuint attachTexture(GLint internal, GLint format, GLsizei width, GLsizei height
 	return texture;
 }
 
-GLuint prepareFBO(vector<GLenum> &buf, vector<GLuint> &tex){
+GLuint prepareFBO(vector<GLenum> &buf, vector<GLuint> &tex) {
 
 	GLuint fbo;
 	glGenFramebuffers(1, &fbo);
@@ -58,16 +60,16 @@ GLuint prepareFBO(vector<GLenum> &buf, vector<GLuint> &tex){
 
 	//ägéUîΩéÀ D
 	tex[0] = attachTexture(GL_RGBA, GL_RGBA, FBOWIDTH, FBOHEIGHT, buf[0]);
-	
+
 	//ãæñ îΩéÀ S
 	tex[1] = attachTexture(GL_RGBA, GL_RGBA, FBOWIDTH, FBOHEIGHT, buf[1]);
-	
+
 	//à íu P
 	tex[2] = attachTexture(GL_RGBA16F, GL_RGB, FBOWIDTH, FBOHEIGHT, buf[2]);
-	
+
 	//ñ@ê¸ N
 	tex[3] = attachTexture(GL_RGBA16F, GL_RGB, FBOWIDTH, FBOHEIGHT, buf[3]);
-	
+
 	//ê[ìx
 	tex[4] = attachTexture(GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, FBOWIDTH, FBOHEIGHT, GL_DEPTH_ATTACHMENT);
 
@@ -81,7 +83,7 @@ static int irselect = 0;
 int main(int argc, const char* argv[]) {
 
 	if (glfwInit() == GL_FALSE) {
-		cerr << "Can't initialize GLFW" << endl;
+		cerr << "Can't initialize GLFW" << endl; 
 		exit(1);
 	}
 
@@ -93,7 +95,7 @@ int main(int argc, const char* argv[]) {
 
 	Window window("Default Window" , 640, 480);
 	Camera camera = window.getCamera();
-	camera.position = vec3(0.0f, 4.0f, 5.0f);
+	camera.position = vec3(0.0f, 0.0f, 4.0f);
 
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -127,14 +129,16 @@ int main(int argc, const char* argv[]) {
 	GLuint fbo = prepareFBO(buf, tex);
 
 	Light light;
-	light.transform.position = vec3(4.0, 4.0, 4.0);
+	light.transform.position = vec3(0.0, 0.0, -4.0);
+
+	LSPSM lspsm;
+	lspsm.transform.position = vec3(0.0, 0.0, -4.0);
 
 	Shader pass1("pass1.vert","pass1.frag");
 	Shader pass2("PBR.vert", "PBR.frag");
 	Shader shadow("shadow.vert", "shadow.frag");
 	Shader prev("prev.vert", "prev.frag");
 
-	
 	Obj::mat mat(
 		vec4(0.1f, 0.1f, 0.1f, 1.0f),
 		vec4(0.6f, 0.6f, 0.6f, 1.0f),
@@ -176,6 +180,13 @@ int main(int argc, const char* argv[]) {
 	cube.transform.position = vec3(0.0f, -1.0f, 0.0f);
 	cube.transform.scale = vec3(4.0f, 0.2f, 4.0f);
 
+	PointList obj_plist;
+	obj_plist.Add(obj.aabb.max);
+	obj_plist.Add(obj.aabb.min);
+
+	PointList cube_plist;
+	cube_plist.Add(cube.aabb.max);
+	cube_plist.Add(cube.aabb.min);
 
 	vector<vec3> position = {
 		vec3( -1.0f, -1.0f, 0.0f),
@@ -195,7 +206,19 @@ int main(int argc, const char* argv[]) {
 
 	Quad quad2(position2, GL_TRIANGLE_STRIP);
 
+
 	while(window.shouldClose() == GL_FALSE){
+		lspsm.pointList.Clear();
+		PointList objPL = lspsm_utils::translate(obj_plist, obj.transform.asMatrix());
+		PointList cubePL = lspsm_utils::translate(cube_plist, cube.transform.asMatrix());
+		lspsm.pointList.Add(objPL);
+		lspsm.pointList.Add(cubePL);
+
+		lspsm.compute_USM(lspsm.transform.position, vec3(0.0) - lspsm.transform.position);
+
+		light.transform.position = lspsm.transform.position;
+		light.ViewMatrix = lspsm.view;
+		light.ProjectionMatrix = lspsm.projection;
 
 		/* shadow pass */
 		shadow.use();
@@ -303,6 +326,11 @@ int main(int argc, const char* argv[]) {
 		/* prev pass */
 
 		window.swapBuffers();
+	}
+
+	for (int i = 0; i < texfile.size(); ++i)
+	{
+		glDeleteTextures(1, &texname[i]);
 	}
 
 	for (GLsizei i = 0; i < texnum; ++i) {

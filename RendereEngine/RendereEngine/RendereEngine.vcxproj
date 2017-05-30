@@ -79,11 +79,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(OPENCV_INSTALL_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\mori\Documents\Library\glfw\include;C:\Users\mori\Documents\Library\glm;C:\Users\mori\Documents\Library\glext;$(OPENCV_INSTALL_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opencv_calib3d310.lib;opencv_core310.lib;opencv_features2d310.lib;opencv_flann310.lib;opencv_highgui310.lib;opencv_imgcodecs310.lib;opencv_imgproc310.lib;opencv_ml310.lib;opencv_objdetect310.lib;opencv_photo310.lib;opencv_shape310.lib;opencv_stitching310.lib;opencv_superres310.lib;opencv_video310.lib;opencv_videoio310.lib;opencv_videostab310.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OPENCV_INSATLL_DIR)\x86\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_calib3d310d.lib;opencv_core310d.lib;opencv_features2d310d.lib;opencv_flann310d.lib;opencv_highgui310d.lib;opencv_imgcodecs310d.lib;opencv_imgproc310d.lib;opencv_ml310d.lib;opencv_objdetect310d.lib;opencv_photo310d.lib;opencv_shape310d.lib;opencv_stitching310d.lib;opencv_superres310d.lib;opencv_video310d.lib;opencv_videoio310d.lib;opencv_videostab310d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\mori\Documents\Library\glfw\lib-vc2015;$(OPENCV_INSTALL_DIR)\x86\vc14\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -136,11 +136,13 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AABB.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="glext_win.h" />
     <ClInclude Include="GLSLCompiler.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="LSPSM.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Obj.h" />

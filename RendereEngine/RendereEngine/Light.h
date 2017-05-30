@@ -41,12 +41,15 @@ public:
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 		glBindTexture(GL_TEXTURE_2D, 0);
+
+		ProjectionMatrix = ortho(-4.0, 4.0, -4.0, 4.0, 1.0, 10.0); //perspective(70.0f, 1.0f, 1.0f, 10.0f);//if use perspective, it mean spot light 
+		ViewMatrix = lookAt(transform.position, vec3(0, 0, 0), vec3(0, 1, 0));
 	}
 
 	void use() {
 		glBindFramebuffer(GL_FRAMEBUFFER, shadowMapFBO);
 
-		glPolygonOffset(1.0f, 1.0f);
+		glPolygonOffset(2.0f, 4.0f);
 
 		glEnable(GL_DEPTH_TEST);
 
@@ -79,8 +82,6 @@ public:
 	int shadowMapResolution = 512;
 
 	mat4 getLightMatrix() {
-		ProjectionMatrix = ortho(-4.0, 4.0, -4.0, 4.0, 1.0, 10.0); //perspective(70.0f, 1.0f, 1.0f, 10.0f);//if use perspective, it mean spot light 
-		ViewMatrix = lookAt(transform.position, vec3(0, 0, 0), vec3(0, 1, 0));
 		return ProjectionMatrix * ViewMatrix;
 	}
 

@@ -1,5 +1,6 @@
 #include "Window.h"
 
+
 #define DEBUG 1
 
 Window::Window(const char *title , int width , int height)
@@ -16,7 +17,12 @@ Window::Window(const char *title , int width , int height)
 
 	InitializeExtFuncs();
 
+	
+
 #if DEBUG
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//_CrtSetBreakAlloc(489);
+
 	GLint flags;
 	glGetIntegerv(GL_CONTEXT_FLAGS, &flags);
 	if (flags & GL_CONTEXT_FLAG_DEBUG_BIT)
@@ -29,6 +35,7 @@ Window::Window(const char *title , int width , int height)
 
 	glfwSetErrorCallback(error_callback);
 #endif // DEBUG
+
 
 	glfwSwapInterval(1);
 

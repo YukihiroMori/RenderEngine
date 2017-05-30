@@ -122,6 +122,12 @@
     <ClInclude Include="debug.h">
       <Filter>Header Files\external</Filter>
     </ClInclude>
+    <ClInclude Include="LSPSM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>Header Files\Mesh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="pass1.frag">

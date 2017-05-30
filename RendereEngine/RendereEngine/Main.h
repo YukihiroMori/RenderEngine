@@ -20,6 +20,7 @@
 
 #define GLM_ENABLE_EXPERIMENTAL
 #define GLM_FORCE_RADIANS
+#define GLM_FORCE_SWIZZLE
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include "glext_win.h"
